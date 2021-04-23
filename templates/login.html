@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block style %}
+<title>Log in</title>
+<link rel=stylesheet href="{{ url_for('static', filename='loginstyle.css') }}"/>
+{% endblock style %}
+{% block content %}
+    <div id="content-box">
+            Log in with your I.T.Café account
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p id="loginmessages">{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+        <form action="" method="POST">
+            <p>Name:
+            <input type="text" name="input_name" /></p>
+            <p>Password:
+            <input type="password" name="input_pass" /></p>
+            <p><input type="submit" value=submit class=submit /></p>
+            </p>
+        </form>
+
+    </div>
+{% endblock content %}                           

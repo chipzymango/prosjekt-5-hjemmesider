@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block style %}
+<title>About</title>
+<link rel=stylesheet href="{{ url_for('static', filename='aboutstylebbbb.css') }}"/>
+{% endblock style %}
+{% block content %}
+    <div id="content-box">
+        <h1>Database Table</h1>
+    </div>
+
+    {% for item in values %}
+    <table>Username: {{item.name}}, User Email: {{item.email}}, Password: {{item.password}}</table>
+    {% endfor %}
+
+{% endblock content %}                           

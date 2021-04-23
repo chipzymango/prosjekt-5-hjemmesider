@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block style %}
+<title>About</title>
+<link rel=stylesheet href="{{ url_for('static', filename='aboutstyle.css') }}"/>
+{% endblock style %}
+{% block content %}
+    <div id="content-box">
+        <div id="about-box">
+            <h1>About</h1>
+            <p>About...</p>
+        </div>
+    </div>
+{% endblock content %}                           

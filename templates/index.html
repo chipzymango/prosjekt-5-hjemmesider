@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block style %}
+    <title>Welcome!</title>
+    <link rel=stylesheet href="{{ url_for('static', filename='indexstyle.css') }}" />
+{% endblock style %}
+{% block content %}
+    <div id="content-box">
+        <h1>Welcome!</h1>
+    </div>
+{% endblock content %}

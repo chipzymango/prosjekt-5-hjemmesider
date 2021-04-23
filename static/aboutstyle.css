@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Indie+Flower&family=Satisfy&display=swap');
 
-
 :root { /*declaring variables in :root is same as defining them in global scope.*/
     --fixed_width: 70%;
     --dark_color: rgb(58, 58, 58, 0.75);
@@ -23,9 +22,10 @@ body > #background {
     height: 100%;
     width: 100%;    
     background-color: var(--light_blue);
-    clip-path: polygon(0 50%, 100% 0, 100% 73%, 0 100%);
+    clip-path: polygon(50% 0%, 100% 44%, 100% 69%, 24% 100%, 0 29%);
     position: absolute;
     z-index: -1;
+    opacity: 0.5;
 }
 
 #container {
@@ -75,6 +75,10 @@ body > #background {
     text-decoration: none;
 }
 
+.line {
+    color: red;
+}
+
 /*this creates the space between the navigation elements*/
 
 #content { /*center the navigation and justify the width to match navigation's*/
@@ -82,7 +86,19 @@ body > #background {
     min-height: calc(100vh - 50px - 100px); /*this is a solution, though it is not cross-compatible with all browsers...*/
     }
 
-#content-box p {
+#content-box {
+    width: 90%;
+    height: 90%;
+    margin: 10%;
+}
+
+#about-box {
+    width: 95%;
+    margin: 5%;
+    text-align: center;
+}
+
+#content-box h1 {
     font-family: 'Satisfy', cursive;
 }
 
@@ -115,12 +131,16 @@ body > #background {
     font-size: large;
 }
 
-#content-box {
+#content-box h1 {
     text-align: center;
 }
 
 #content-box p {
-    font-size: 70;
+    font-size: 14;
+}
+
+#content-box p:first-child {
+    float: left;
 }
 
 #content-images {
@@ -135,12 +155,12 @@ body > #background {
     background-size: 100%;
 }
 
-#content-images img:last-child {
+#about-box img:last-child {
     transform: scaleX(-1); /*flips image*/
     padding-right: 400px;
 }
 
-@keyframes changing_colors {
+@keyframes changing_colors { /*create animation that changes color over time*/
     0% {
         color: white;
     }
