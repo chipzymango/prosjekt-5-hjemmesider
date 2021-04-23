@@ -11,8 +11,8 @@ db = SQLAlchemy(app) # database
 
 class User(db.Model):
     _id = db.Column("id", db.Integer, primary_key=True)
-    name = db.Column("name", db.String(100), nullable=False)
-    email = db.Column("email", db.String(100), nullable=False)
+    name = db.Column("name", db.String(50), nullable=False)
+    email = db.Column("email", db.String(50), nullable=False)
     password = db.Column("password", db.String(10), nullable=False)
 
     def __init__(self, name, email, password):
@@ -90,4 +90,5 @@ def viewusers():
     return render_template("viewtables.html", values=User.query.all())
     
 if __name__ == "__main__": # only if we run this file directly, we will run the app, not if we import this file from another file.
+    db.create_all()
     app.run(debug=True)

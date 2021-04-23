@@ -6,10 +6,13 @@
 {% block content %}
     <div id="content-box">
         <h1>Database Table</h1>
+        {% for item in values %}
+        <table>
+            Username: {{item.name}},<br> 
+            User-Email: {{item.email}},<br> 
+            Password: {{item.password}}<br>
+        </table>
+        {% endfor %}
     </div>
-
-    {% for item in values %}
-    <table>Username: {{item.name}}, User Email: {{item.email}}, Password: {{item.password}}</table>
-    {% endfor %}
 
 {% endblock content %}                           
