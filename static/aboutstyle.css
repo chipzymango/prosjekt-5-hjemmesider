@@ -75,8 +75,8 @@ body > #background {
     text-decoration: none;
 }
 
-.line {
-    color: red;
+.auth {
+    float: right;
 }
 
 /*this creates the space between the navigation elements*/

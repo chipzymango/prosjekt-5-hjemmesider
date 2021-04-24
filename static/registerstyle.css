@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Indie+Flower&family=Satisfy&display=swap');
 
-
-:root { /*declaring variables in :root is the same as defining them in a global scope.*/
-    --fixed_width: 100%;
-    --dark_color: rgba(58, 58, 58, 0.75);
-    --light_color: rgb(215, 215, 215);
+:root { /*declaring variables in :root is same as defining them in global scope.*/
+    --fixed_width: 70%;
+    --dark_color: rgb(58, 58, 58, 0.75);
+    --light_color: rgb(224, 224, 224);
     --extra_light_color: rgb(230, 230, 230);
-    --light_blue: rgb(210, 210, 255);
-    --chipzy_color: rgb(25, 0, 255);
+    --light_blue: rgb(219, 219, 219);
+    --chipzy_color: rgb(71, 71, 71);
 }
 
 * { /* the "*" tag means target everything.*/
@@ -16,22 +15,24 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif; /*apply font style to everything inside html (all text)*/
-    color: var(--dark_color)
+    color: rgb(20, 20, 20);
 }
 
 body > #background {
     height: 100%;
     width: 100%;    
     background-color: var(--light_blue);
-    clip-path: polygon(0 50%, 100% 0, 100% 73%, 0 100%);
+    clip-path: polygon(50% 0%, 100% 44%, 100% 69%, 24% 100%, 0 29%);
     position: absolute;
     z-index: -1;
+    opacity: 0.5;
 }
 
 #container {
     width: var(--fixed_width);
     height: 100%;
     margin: auto; /*centers the container element*/
+    background-color: rgb(247, 247, 247);
     position: relative;
 }
 
@@ -49,10 +50,14 @@ body > #background {
 }
 
 #nav ul b {
-    float: left;    
+    float: left;
     animation: changing_colors 5s infinite;
     font-size: large;
     padding-top: 5px;
+}
+
+.auth {
+    float: right;
 }
 
 #nav li {
@@ -74,8 +79,8 @@ body > #background {
     text-decoration: none;
 }
 
-.auth {
-    float: right;
+.line {
+    color: green;
 }
 
 /*this creates the space between the navigation elements*/
@@ -83,14 +88,22 @@ body > #background {
 #content { /*center the navigation and justify the width to match navigation's*/
     margin: auto;
     min-height: calc(100vh - 50px - 100px); /*this is a solution, though it is not cross-compatible with all browsers...*/
+    text-align: center;
 }
 
-#content-box h1 {
-    font-family: 'Satisfy', cursive;
-    padding-top: 50px;
-    font-size: 225;
-    animation: entrance_animation 2s ease-in;
-    color:rgb(0, 132, 255);
+#content-box {
+    margin: auto;
+    width: 500px;
+    height: 300px;
+    margin-top: 20px;
+    padding: 10px;
+    padding-left: 7px;
+    background-color: rgb(219, 219, 219);
+    text-align: center;
+}
+
+h3 {
+    font-family: 'Poppins', 'sans-serif';
 }
 
 .push {
@@ -104,7 +117,6 @@ body > #background {
     text-align: center;
     position: absolute;
     font-size: small;
-    padding-left: 20px;
 }
 
 #footer ul {
@@ -119,42 +131,15 @@ body > #background {
 }
 
 #footer li:first-child { /*targets the first list element that is found*/
-/*    color: var(--chipzy_color);*/
     animation: changing_colors 5s infinite;
     font-size: large;
-    font-weight: bold;
 }
 
-#content-box {
-    text-align: center;
-}
-
-#content-box p {
-    font-size: 70;
-}
-
-#content-images {
-    width: 100%;
-    height: 100%;
-    align-self: center;
-}
-
-#content-images img {
-    opacity: 15%;
-    position: fixed;
-    background-size: 100%;
-}
-
-#content-images img:last-child {
-    transform: scaleX(-1); /*flips image*/
-    padding-right: 400px;
-}
-
-#flashingmessages {
+#registermessages {
     background-color: rgb(183, 228, 203);
 }
 
-@keyframes changing_colors {
+@keyframes changing_colors { /*create animation that changes color over time*/
     0% {
         color: white;
     }
@@ -165,20 +150,6 @@ body > #background {
 
     100% {
         color: white;
-    }
-}
-
-@keyframes entrance_animation {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 50%;
-    }
-
-    100% {
-        opacity: 100%;
     }
 }
 

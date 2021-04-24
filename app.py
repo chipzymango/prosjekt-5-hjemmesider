@@ -43,49 +43,78 @@ def register():
         submit_pass = request.form.get('new_pass')
         submit_email = request.form.get('new_email')
         
-        new_user = User(submit_name, submit_email, submit_pass) # creating a new user
-        db.session.add(new_user) # adding user to database
-        db.session.commit() # commit changes to the database
+        if len(submit_name) < 0 or len(submit_email) < 0 or len(submit_pass) < 0:
+            flash("please fill out the whole form")
+            return render_template("register.html")
 
-        flash(f"user {submit_name} has been registered! you can now log in...")
-        return redirect(url_for("login"))
+        if len(User.query.filter_by(password=submit_pass).all()) > 0:
+            flash("username already exists")
+            return render_template("register.html")
+
+        elif len(User.query.filter_by(email=submit_email).all()) > 0:
+            flash("email is already registered, please use another one")
+            return render_template("register.html")
+
+        else:
+            new_user = User(submit_name, submit_email, submit_pass) # creating a new user
+            db.session.add(new_user) # adding user to database
+            db.session.commit() # commit changes to the database
+
+            flash("user " + submit_name + " has been registered! you can now log in...")
+            return redirect(url_for("login"))
 
     else: # --> if the user has connected to the website (GET)
         return render_template("register.html")
 
 @app.route("/login/", methods=["POST", "GET"]) 
 def login():
+    if "active_username" in session:
+
+        return redirect(url_for("index"))
+
     if request.method == 'POST':
         submit_name = request.form.get('input_name')
         submit_pass = request.form.get('input_pass')
         
-        found_username = User.query.filter_by(name=submit_name).first()
-        found_userpassword = User.query.filter_by(password=submit_pass).first()
-
-        if found_username and found_userpassword: # if name and password matches
-            session['active_username'] = found_username.name
-            session['active_userpassword'] = found_userpassword.password
-            session['active_useremail'] = found_username.email
-            flash("login was successful")
-            return redirect(url_for("index"))
+        found_username = User.query.filter_by(name=submit_name).first() # if submitted name == name in database then it is True (or else, False)
+        found_userpassword = User.query.filter_by(password=submit_pass).first() # if submitted pass == pass in database then it is True (or else, False)
+        if len(submit_name) == 0 or len(submit_pass) == 0:
+            flash("please write your name and password!")
+            
+            return redirect(url_for("login"))
+        else:
+            if found_username and found_userpassword:
+                session['active_username'] = found_username.name
+                session['active_userpassword'] = found_userpassword.password
+                session['active_useremail'] = found_username.email
+                flash("login was successful")
+                return redirect(url_for("login"))
+            else:
+                flash("The username or password combination is incorrect!")
+                
+                return redirect(url_for("login"))
     else:
         return render_template("login.html") # here we return html. It can also be a html template.
 
 @app.route("/logout/")
 def logout():
-    return render_template("logout.html")
+    session.pop("active_username", None)
+    session.pop("active_userpassword", None)
+    session.pop("active_useremail", None)
 
-# -----
+    flash("You are now logged out!")
+
+    return redirect(url_for("index"))
+
+# ----- not visible
 
 @app.route("/viewusers/") 
 def viewusers():
     if "active_username" in session:
 
         active_username = session["active_username"]
-        active_userpassword = session["active_userpassword"]
-        active_useremail = session["active_useremail"]
 
-        flash(f"You are logged in as; {active_username}")
+        flash("You are logged in as " + active_username)
 
     return render_template("viewtables.html", values=User.query.all())
     

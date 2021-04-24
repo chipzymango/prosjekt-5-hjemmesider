@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block style %}
 <title>About</title>
-<link rel=stylesheet href="{{ url_for('static', filename='aboutstylebbbb.css') }}"/>
+<link rel=stylesheet href="{{ url_for('static', filename='aboutstyle.css') }}"/>
 {% endblock style %}
 {% block content %}
     <div id="content-box">
@@ -9,8 +9,8 @@
         {% for item in values %}
         <table>
             Username: {{item.name}},<br> 
-            User-Email: {{item.email}},<br> 
-            Password: {{item.password}}<br>
+            Email: {{item.email}},<br> 
+            Password: {{item.password}}<br><br>
         </table>
         {% endfor %}
     </div>

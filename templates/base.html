@@ -13,10 +13,14 @@
                     <b>> chipzymango</b>
                     <a href='/index/'><li>Home</li></a>
                     <a href='/about/'><li>About</li></a>
-                    <a href='/index/'><li>Contacts</li></a>
-                    <div class="line"></div>
-                    <a href='/register/'><li>Register</li></a>
-                    <a href='/login/'><li>Login</li></a>
+                    <a href='/register/' class='auth'><li>Register</li></a>
+                    {% block extra %}
+                        {% if session["active_username"] %}
+                            <a href='/logout' class='auth'><li>Logout</li></a>
+                            {% else %}
+                            <a href='/login' class='auth'><li>Login</li></a>
+                        {% endif %}
+                    {% endblock extra %}
                 </ul>
             </div>
 
