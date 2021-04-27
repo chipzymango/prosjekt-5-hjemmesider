@@ -1,3 +1,3 @@
 # prosjekt-5-hjemmesider
-project task in school
-website: alex.arvid.software
+project task in school.
+website URL: alex.arvid.software
