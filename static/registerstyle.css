@@ -136,7 +136,7 @@ h3 {
 }
 
 #registermessages {
-    background-color: rgb(183, 228, 203);
+    background-color: rgb(214, 231, 151);
 }
 
 @keyframes changing_colors { /*create animation that changes color over time*/
@@ -145,7 +145,7 @@ h3 {
     }
 
     50% {
-        color: rgb(129, 129, 255);
+        color: rgb(40, 40, 40);
     }
 
     100% {

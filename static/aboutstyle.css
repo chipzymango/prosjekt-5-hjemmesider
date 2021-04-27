@@ -95,11 +95,10 @@ body > #background {
 #about-box {
     width: 95%;
     margin: 5%;
-    text-align: center;
 }
 
 #content-box h1 {
-    font-family: 'Satisfy', cursive;
+    font-family: 'Poppins', cursive;
 }
 
 .push {
@@ -158,6 +157,10 @@ body > #background {
 #about-box img:last-child {
     transform: scaleX(-1); /*flips image*/
     padding-right: 400px;
+}
+
+#flashingmessages {
+    background-color: rgb(181, 159, 240);
 }
 
 @keyframes changing_colors { /*create animation that changes color over time*/

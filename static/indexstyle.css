@@ -151,7 +151,7 @@ body > #background {
 }
 
 #flashingmessages {
-    background-color: rgb(183, 228, 203);
+    background-color: rgb(149, 172, 223);
 }
 
 @keyframes changing_colors {

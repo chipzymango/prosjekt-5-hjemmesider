@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block style %}
+<title>Delete users</title>
+<link rel=stylesheet href="{{ url_for('static', filename='aboutstyle.css') }}"/>
+{% endblock style %}
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p id="flashingmessage">{{msg}}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<form action="" method="POST">
+    <p>user to delete:
+    <input type="text" placeholder="write username of user to delete" name="deleteduser">
+    </p>
+    <input type="submit" value="delete" name="deleteone">
+    <br>
+    <input type="submit" value="delete all users" name="deleteall">
+</form>
+{% endblock content %}
